@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Agent</title>
+  <script src="/static/main.js" defer></script>
+</head>
+<body>
+  <h1>Talk to an AI Agent</h1>
+  <select id="model">
+    <option value="OpenAI">OpenAI</option>
+    <option value="Claude">Claude</option>
+    <option value="Gemini">Gemini</option>
+  </select>
+  <br><br>
+  <textarea id="prompt" placeholder="Ask something..." rows="4" cols="50"></textarea>
+  <br><br>
+  <button onclick="sendPrompt()">Send</button>
+  <p id="response"></p>
+</body>
+</html>
