@@ -1,2 +1,2 @@
 # ai-agent-files
-familiarizing ourselves with ai agent tech stack
+A lightweight web app that lets you switch between AI models like OpenAI, Claude, and Gemini to compare responses in real time.
