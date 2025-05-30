@@ -1,17 +1,16 @@
-from models.chatgpt import query_chatgpt
-from models.gemini import query_gemini
-from models.claude import query_claude
-from evaluator import evaluate_responses
+from flask import render_template, request, jsonify
+from main import call_model
 
-def get_best_response(prompt):
-    responses = {
-        "ChatGPT": query_chatgpt(prompt),
-        "Gemini": query_gemini(prompt),
-        "Claude": query_claude(prompt)
-    }
+def register_routes(app):
+    @app.route('/')
+    def home():
+        return render_template('index.html')
 
-if prompt = ChatGPT[]:
-    return null
+    @app.route('/ask', methods=['POST'])
+    def ask():
+        data = request.json
+        prompt = data.get('prompt')
+        model = data.get('model')
+        response = call_model(model, prompt)
+        return jsonify({'response': response})
 
-    best_model, best_output = evaluate_responses(responses)
-    return f"[{best_model}] {best_output}"
