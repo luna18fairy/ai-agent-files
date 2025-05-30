@@ -1,3 +1,5 @@
+#AI model switch logic
+
 def call_model(model_name, prompt):
     if model_name == 'OpenAI':
         return f"[OpenAI says] {prompt}"
@@ -7,5 +9,4 @@ def call_model(model_name, prompt):
         return f"[Gemini thinks] {prompt}"
     else:
         return "Unsupported model."
-
 
