@@ -1,14 +1,11 @@
-# Need to connect this to the drive brain (if hardware persists)
+def call_model(model_name, prompt):
+    if model_name == 'OpenAI':
+        return f"[OpenAI says] {prompt}"
+    elif model_name == 'Claude':
+        return f"[Claude replies] {prompt}"
+    elif model_name == 'Gemini':
+        return f"[Gemini thinks] {prompt}"
+    else:
+        return "Unsupported model."
 
-from router import get_best_response
 
-
-def main():
-    user_input = input("You: ")
-    best_response = get_best_response(user_input)
-    print("AI:", best_response)
-
-def main():
-    user_input = input("You: ")
-    best_response = get_best_response(user_input)
-    print("AI:", best_response)
