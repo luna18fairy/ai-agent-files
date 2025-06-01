@@ -1,20 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AI Agent</title>
-  <script src="/static/main.js" defer></script>
+  <meta charset="UTF-8">
+  <title>AI Agent Chat</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap">
+  <style>
+    :root {
+      --bg-light: #f7f7f8;
+      --bg-dark: #1e1f22;
+      --bubble-light: #e0e0e0;
+      --bubble-dark: #2c2f36;
+      --text-light: #1f1f1f;
+      --text-dark: #ffffff;
+      --accent: #10a37f;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .chat-box {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+
+    .chat-bubble {
+      padding: 0.75rem 1rem;
+      margin: 0.5rem 0;
+      border-radius: 1rem;
+      max-width: 75%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background-color: var(--accent);
+      color: white;
+      align-self: flex-end;
+    }
+
+    .ai {
+      background-color: var(--bubble-light);
+      color: var(--text-light);
+      align-self: flex-start;
+    }
+
+    body.dark .ai {
+      background-color: var(--bubble-dark);
+      color: white;
+    }
+
+    .input-row {
+      display: flex;
+      margin-top: 1rem;
+      gap: 0.5rem;
+    }
+
+    textarea {
+      flex-grow: 1;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.75rem;
+      resize: none;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    button {
+      background-color: var(--accent);
+      border: none;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #0e8f6d;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    select, .mode-toggle {
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      background-color: white;
+    }
+
+    body.dark select, body.dark .mode-toggle {
+      background-color: var(--bubble-dark);
+      color: white;
+      border: 1px solid #444;
+    }
+  </style>
 </head>
-<body>
-  <h1>Talk to an AI Agent</h1>
-  <select id="model">
-    <option value="OpenAI">OpenAI</option>
-    <option value="Claude">Claude</option>
-    <option value="Gemini">Gemini</option>
-  </select>
-  <br><br>
-  <textarea id="prompt" placeholder="Ask something..." rows="4" cols="50"></textarea>
-  <br><br>
-  <button onclick="sendPrompt()">Send</button>
-  <p id="response"></p>
+<body class="light">
+  <div class="container">
+    <div class="top-bar">
+      <select id="model">
+        <option value="OpenAI">OpenAI</option>
+        <option value="Claude">Claude</option>
+        <option value="Gemini">Gemini</option>
+      </select>
+      <button class="mode-toggle" onclick="toggleMode()">🌞 / 🌙</button>
+    </div>
+
+    <div id="chat" class="chat-box">
+      <!-- Chat bubbles will appear here -->
+    </div>
+
+    <div class="input-row">
+      <textarea id="prompt" placeholder="Type your message..." rows="2"></textarea>
+      <button onclick="sendPrompt()">Send</button>
+    </div>
+  </div>
+
+  <script src="/static/main.js"></script>
+  <script>
+    function toggleMode() {
+      const body = document.body;
+      body.classList.toggle("light");
+      body.classList.toggle("dark");
+    }
+  </script>
 </body>
 </html>
