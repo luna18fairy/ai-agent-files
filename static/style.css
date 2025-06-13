@@ -1,0 +1,153 @@
+:root {
+    --bg-dark: #0b0b0f;
+    --text-light: #fff;
+    --accent: #10a37f;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+  }
+  
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem 10%;
+    min-height: 90vh;
+    background: radial-gradient(circle at center, #15161b 0%, #0b0b0f 100%);
+  }
+  
+  .hero-text {
+    max-width: 50%;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-text button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .hero-visual img {
+    max-width: 400px;
+    border-radius: 20px;
+  }
+  
+  .chat-wrapper {
+    padding: 2rem 10%;
+    transition: opacity 0.5s ease;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .chat-box {
+    background: #1e1f22;
+    border-radius: 10px;
+    padding: 1rem;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .chat-bubble {
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    max-width: 70%;
+  }
+  
+  .user {
+    background-color: var(--accent);
+    align-self: flex-end;
+    color: white;
+  }
+  
+  .ai {
+    background-color: #2c2f36;
+    align-self: flex-start;
+    color: white;
+  }
+  
+  .input-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  textarea {
+    flex-grow: 1;
+    border-radius: 8px;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .logos-scroll {
+    margin-top: 3rem;
+    padding: 1rem 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    background: #111;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1rem;
+  }
+  
+  .logos-track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 20s linear infinite;
+  }
+  
+  .logos-track img {
+    height: 32px;
+    opacity: 0.8;
+    transition: transform 0.3s;
+  }
+  
+  .logos-track img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  
