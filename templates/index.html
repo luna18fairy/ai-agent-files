@@ -14,11 +14,32 @@
       <p>A spreadsheet-based interface to gather, structure, and take action on data with human-level precision.</p>
       <button id="openChat">Try Demo</button>
     </div>
-    <div class="hero-visual">
-      <!-- You can replace this with a real 3D graphic or SVG -->
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Crystal_Cube.png/600px-Crystal_Cube.png" alt="Futuristic Cube" />
-    </div>
+    <!-- Lottie animation -->
+    <dotlottie-player
+      src="https://lottie.host/b9139b83-b14b-4c48-9660-ee1c7dfe1372/YlA5WfjGJk.lottie"
+      background="transparent"
+      speed="1"
+      style="width: 300px; height: 300px"
+      loop
+      autoplay>
+    </dotlottie-player>
   </div>
+  <!-- Floating Try Demo Button -->
+<button id="try-demo-btn">🤖 Try Demo</button>
+
+<!-- Chat Popup -->
+<div id="chat-popup" class="chat-popup hidden">
+  <div class="chat-popup-header">
+    <h3>Chat with our AI</h3>
+    <button id="close-chat">×</button>
+  </div>
+  <div id="popup-chat" class="chat-box"></div>
+  <div class="input-row">
+    <textarea id="popup-prompt" placeholder="Ask something..." rows="2"></textarea>
+    <button onclick="sendPopupPrompt()">Send</button>
+  </div>
+</div>
+
 
   <!-- Hidden Chat UI -->
   <div id="chatContainer" class="chat-wrapper hidden">
@@ -61,6 +82,10 @@
       document.getElementById("chatContainer").classList.remove("hidden");
       document.getElementById("openChat").scrollIntoView({ behavior: "smooth" });
     });
+  </script>
+  <script
+  src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+  type="module">
   </script>
 </body>
 </html>
