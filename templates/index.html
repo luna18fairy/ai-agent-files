@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>AI Agent Chat</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap">
   <style>
@@ -13,12 +13,14 @@
       --text-light: #1f1f1f;
       --text-dark: #ffffff;
       --accent: #10a37f;
+      --highlight: #00ffe5;
     }
 
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
     }
 
     body.light {
@@ -45,14 +47,20 @@
       overflow-y: auto;
       padding: 1rem;
       border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      animation: fadeIn 1s ease;
     }
 
     .chat-bubble {
       padding: 0.75rem 1rem;
-      margin: 0.5rem 0;
       border-radius: 1rem;
       max-width: 75%;
       word-wrap: break-word;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: slideUp 0.3s forwards;
     }
 
     .user {
@@ -123,6 +131,61 @@
       color: white;
       border: 1px solid #444;
     }
+
+    .ai-header {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      animation: fadeIn 1s ease;
+    }
+
+    .ai-header span {
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--highlight);
+    }
+
+    /* Moving logo banner */
+    .logo-banner {
+      width: 100vw;
+      overflow: hidden;
+      white-space: nowrap;
+      position: absolute;
+      bottom: 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo-track {
+      display: inline-block;
+      animation: scroll 25s linear infinite;
+    }
+
+    .logo-track img {
+      height: 30px;
+      margin: 0 2rem;
+      vertical-align: middle;
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
   </style>
 </head>
 <body class="light">
@@ -136,13 +199,24 @@
       <button class="mode-toggle" onclick="toggleMode()">🌞 / 🌙</button>
     </div>
 
-    <div id="chat" class="chat-box">
-      <!-- Chat bubbles will appear here -->
-    </div>
+    <div class="ai-header">🤖 Meet <span>your AI assistant</span></div>
+
+    <div id="chat" class="chat-box"></div>
 
     <div class="input-row">
       <textarea id="prompt" placeholder="Type your message..." rows="2"></textarea>
       <button onclick="sendPrompt()">Send</button>
+    </div>
+  </div>
+
+  <!-- Scrolling logos -->
+  <div class="logo-banner">
+    <div class="logo-track">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Google_2015_logo.svg" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/OpenAI_Logo.svg" />
     </div>
   </div>
 
